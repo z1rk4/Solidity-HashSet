@@ -9,7 +9,12 @@ contract Set {
 
     function add(address value) internal {
         if (indexOf[value] == 0) {
-            items.push(value);
+            if (items_length == items.length) {
+                items.push(value);
+            } else {
+                items[items_length] = value;
+            }
+            
             items_length++;
             indexOf[value] = items_length;
         }
